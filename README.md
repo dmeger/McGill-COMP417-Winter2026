@@ -37,10 +37,18 @@ Please see the [lecture list](Lectures) for details and resources.
 We'll follow a few text books, but material from these will be pointed to and extracted into course notes written by the instructor.
 
 ## Instructor: David Meger
-- Primary contact method: Ed Discussion posts to discuss content, assessments, exams, etc. Mark posts as private for personalized questions. Email is the last resort.
+- Primary contact method: Ed Discussion posts to discuss content, assessments, exams, etc. Mark posts as private for personalized questions. Email is the last resort for connecting with both the instructor and TAs.
 - Email - david.meger@gmail.com (McGill email accounts are currently being “migrated” and not reliable, sorry!)
 - Office: MC 112N (North Wing, walk through the 100N lobby to find my door)
-- Office hours: TBD
+
+## Teaching Assistants
+- Amin Abyaneh
+- Farnoosh Faraji
+- Steve Wen
+- Zhizun (Steven) Wang
+
+## Office Hour Schedule
+To be determined first week in Jan
 
 ## Integrity (including AI)
 McGill University values academic integrity. Therefore, all students must understand the meaning and consequences of cheating, plagiarism and other academic offences under the Code of Student Conduct and Disciplinary Procedures.
