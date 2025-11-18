@@ -22,13 +22,12 @@ Computing fkine typically requires a number of constants about the robot such as
 
 Once all the critical information is loaded, the nature of most robot kinematics makes fkine a "trivial" computation, but this is not always the case. For large chain robots with parallel paths, we might even need to confirm that the input $\theta$ is valid (e.g., that all physically linked chain elements really touch). 
 
-A simple example of forward kinematics is the pendulum, attached to the world at position $[0,0]$, and measuring the angle such that it reads zero when the pole is straight up. The state space is the $[x,y]$ position of the tip of the pendulum, which can sweep out a circle of radius $r$. A single configuration variable, $\theta=[\theta_1]$ controls the rotation and 
+A simple example of forward kinematics is the pendulum, attached to the world at position $[0,0]$, and measuring the angle such that it reads zero when the pole is straight up. The state space is the $[x,y]$ position of the tip of the pendulum, which can sweep out a circle of radius $r$. A single configuration variable, $\theta=[\theta_1]$ controls the rotation with 
 
-$$x = -sin(\theta_1) \\
-y = cos(\theta_1).$$   
+$$x = -sin(\theta_1)$$ and $$y = cos(\theta_1)$$.   
 
 A nice sequence to work through from here is:
-- double pendulum (second pole attached at $[x,y]$ solved above, and can rotate by $\theta_2$)
+- double pendulum (second pole attached at the $[x,y]$ solved above, and can rotate by $\theta_2$)
 - cartpole (the single pendulum's base is attached to a block that can slide along the $x$ axis, with the cart's position being a second configuration element
 - cart double pendulum (or double cartpole), combining these two.
 
@@ -44,7 +43,7 @@ A common solution is to implement a differential form of kinematics, such that w
 
 ### Kinematics Exercises
 
-(E1.1) Using pen-and-paper write down the inverse kinematics, for the series of robots: pendulum, cartpole, double pendulum and double cartpole.
+(E1.1) Using pen-and-paper write down the inverse kinematics for the series of robots: pendulum, cartpole, double pendulum and double cartpole.
 
 (E1.2) Code ikine for the double cartpole in your favorite language. Test the solutions for a number of points and check the accuracy by running fkine on the solutions. Is your method exact? What is the run time. Good code may be very fast on a modern computer, but add good profiling or a loop counter to give you some better feedback on what's happening.
 
@@ -80,7 +79,7 @@ Assuming we can solve the forward dynamics generally, we get great ways to analy
 
 (E1.4) Solve for the equations of motion of some of the pendulum-double cartpole family. A good resource for this is [Marc Deisenroth's PhD thesis](https://www.ias.informatik.tu-darmstadt.de/uploads/Publications/phd_thesis_deisenroth.pdf)
 
-An even more challenging problem, which begins to reach ``Robotic General Intelligence'' in the general case is **Inverse Dynamics**. This requires solving for the control action that move the physical system as desired:
+An even more challenging problem, which begins to reach **Robotic General Intelligence (RGI)** in the general case is **Inverse Dynamics**. This requires solving for the control action that move the physical system as desired:
 
 $$u = idyn(x,\dot{x},\ddot{x})$$
 
