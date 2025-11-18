@@ -10,20 +10,20 @@ Robotics is the study of physical bodies that can perceive and act in the world,
 
 ## Topic List
 Please see the [lecture list](Lectures) for details and resources.
-- Problems
-  - Navigation
-  - Manipulation
-  - Learning from Data
-  - Interaction with Humans
-- Highlight Methods/Models
-  - Bayesian Filtering
-  - Optimal Control
-  - Learning to Model Dynamics (aka “World Models” or “World Foundation Models”)
-  - Model-based and Model-free RL for robotics problems
-  - Imitation Learning including IRL
-  - Active IL
-  - Language-informed High-level Decision Making
-  - Vision-Action-Language Models
+- Kinematic Models
+- Dynamics Models
+- Planning Algorithms
+- Optimal Control
+- Imitation Learning
+- Reinforcement Learning
+- Human-robot Interaction
+- Sensors and Perception
+- State Estimation
+- Map Building
+- Large Robot Models (LRM)
+  - Diffusion Policies
+  - Transformers for Robot Learning
+  - Vision-Language-Action (VLA) Models
 
 ## Assessment Plan
 - (10) in-class quizzes (10%)
