@@ -16,22 +16,22 @@ Please see the [lecture list](Lectures) for details and resources.
 - Optimal Control
 - Imitation Learning
 - Reinforcement Learning
-- Human-robot Interaction
 - Sensors and Perception
 - State Estimation
 - Map Building
-- Large Robot Models (LRM)
-  - Diffusion Policies
-  - Transformers for Robot Learning
-  - Vision-Language-Action (VLA) Models
+
+Enrichment topics that will be covered by readings and guest presentors but not testable:
+- Human-robot Interaction
+- Visual navigation
+- Planning under uncertainty
+- Safe decision making
+- Physical simulation of complex, contact-rich environments
 
 ## Assessment Plan
-- (10) in-class quizzes (10%)
-- (1) group presentation (10%)
-- (3) assignments (20%) 
-- (1) hardware Lab (10%) 
-- (1) mid-term exam (20%)
-- (1) final exam (30%) 
+- (k) online quizzes (10%)
+- (5) assignments (40%) 
+- (1) online mid-term exam (10%)
+- (1) in-person final exam  (40%) 
 
 ## Resources and Materials
 We'll follow a few text books, but material from these will be pointed to and extracted into course notes written by the instructor.
