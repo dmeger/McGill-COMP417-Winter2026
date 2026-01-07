@@ -2,7 +2,7 @@
 
 | Date | Topic | Notes and Resources | 
 | --- | --- | --- | 
-| Jan 5 | Introduction | [Intro Notes](Notes/L1-Intro-Robot-Models.md) <br> <a href="https://users.dimi.uniud.it/~antonio.dangelo/Robotica/2018/helper/Handbook-dynamics.pdf" target="_blank">Dynamics Handbook</a> | 
+| Jan 5 | Introduction | [Intro Notes](Notes/L1-Intro-Robot-Models.md)| 
 | Jan 7 | Kinematics and Dymamics | |
 | Jan 12 | Planning Intro: Dynamic Programming | |
 | Jan 14 | Bug and Cell Algorithms |  |
