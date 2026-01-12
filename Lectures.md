@@ -4,7 +4,7 @@
 | --- | --- | --- | 
 | Jan 5 | Introduction | [Intro Notes](Notes/L1-Intro-Robot-Models.md)| 
 | Jan 7 | Kinematics and Dymamics | |
-| Jan 12 | Planning Intro: Dynamic Programming | [Planning Notes](L2-Planning) |
+| Jan 12 | Planning Intro: Dynamic Programming | [Planning Notes](Notes/L2-Planning.md) |
 | Jan 14 | Bug and Cell Algorithms |  |
 | Jan 19 | Roadmaps |  |
 | Jan 21 | Random Trees |  |
