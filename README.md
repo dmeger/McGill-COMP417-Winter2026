@@ -41,14 +41,19 @@ We'll follow a few text books, but material from these will be pointed to and ex
 - Email - david.meger@gmail.com (McGill email accounts are currently being “migrated” and not reliable, sorry!)
 - Office: MC 112N (North Wing, walk through the 100N lobby to find my door)
 
-## Teaching Assistants
+## Teaching Assistants (contact first on Ed)
 - Amin Abyaneh
 - Farnoosh Faraji
 - Steve Wen
 - Zhizun (Steven) Wang
 
-## Office Hour Schedule
-To be determined first week in Jan
+## Office Hour Schedule. Always in the Robotics Teaching Lab, TR4130 unless noted
+- Dave in-person: Wednesday 2:30-3:30
+- Dave on [https://mcgill.zoom.us/j/9225598493](Zoom): Friday 10am-11am
+- Amin: Wednesday noon-1pm
+- Farnoosh: Friday 1pm-2pm
+- Steven: Thursday 5pm-6pm
+- Steve: Monday 4pm-5pm
 
 ## Integrity (including AI)
 McGill University values academic integrity. Therefore, all students must understand the meaning and consequences of cheating, plagiarism and other academic offences under the Code of Student Conduct and Disciplinary Procedures.
