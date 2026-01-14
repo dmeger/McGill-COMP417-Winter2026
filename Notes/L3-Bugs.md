@@ -34,8 +34,8 @@ A small fix improves the situation:
     - Check the direction to the goal. If it is clear:
         - Move towards the goal.
     - Else:
-        - Turn to the left **and remember the line $L$ between our point of contact with the obstacle and the goal.**
-        - Walk "with your hand on the obstacle" until you reach $L$ and the path along $L$ to the goal is clear.
+        - Turn to the left **and remember the line $L$ between our point of contact with the obstacle and the goal, plus distance $d_{init}=d(x,g)$.**
+        - Walk "with your hand on the obstacle" until you reach $L$, the path along $L$ to the goal is clear and $d(x,g) \le d_{init}$.
 
 This fixes the previous counter-example. We claim this algorithm is now Complete. It will reach the goal if a path exists. Can you find any counter-example?
 
