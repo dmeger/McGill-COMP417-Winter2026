@@ -2,11 +2,11 @@
 
 | Date | Topic | Notes and Resources | 
 | --- | --- | --- | 
-| Jan 5 | Introduction | [Intro Notes](Notes/L1-Intro-Robot-Models.md)| 
-| Jan 7 | Kinematics and Dymamics | |
+| Jan 5 | Introduction | No notes, not testable, just an overview of topics | 
+| Jan 7 | Kinematics and Dymamics | [Modeling Notes](Notes/L1-Intro-Robot-Models.md) |
 | Jan 12 | Planning Intro: Dynamic Programming | [Planning Notes](Notes/L2-Planning.md) |
-| Jan 14 | Bug and Cell Algorithms |  |
-| Jan 19 | Roadmaps |  |
+| Jan 14 | Bug Algorithms | [Bug Algorithm Notes](Notes/L3-Bugs.md)  |
+| Jan 19 | Cell Decomposition and Roadmaps |  |
 | Jan 21 | Random Trees |  |
 | Jan 26 | Control Intro: MDPs |  |
 | Jan 28 | PID Control | |

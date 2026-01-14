@@ -12,8 +12,9 @@ In order to use our tools from graph algorithms, we want the robot to be able to
 - Costs $c(v,v')$ come from some problem-dependent measure of what we want to achieve with our plan, but they are almost always going to be spatial or temporal quantities, like the distance between states or the time it takes to transition. Occassionally we might see the energy use, or safety factors. In any case, the function $c$ is external to our planning algorithm and must be available to call for every potential.
 
 Our goal in planning is to find the a path, $P=[v_0, ..., v_k]$ (along with accompanying commands $[u_0,...,u_{k-1}]$), that satisfies starting at the start and ending in the goal set. Properties of planners include:
-- Optimal: if the planner only returns shortest paths.
+- Correct: if the planner always outputs a **feasible** path. That is one that begins at the start, ends in a goal and makes valid transitions at every step (respects kinematics and has no collisions).
 - Complete: if the planner always returns a path when one is possible.
+- Optimal: if the planner only returns shortest/best paths.
 - Terminating: if the planner always stops (it cannot run forever).
 
 ## Algorithm 1: Brute-force Search
@@ -56,5 +57,46 @@ Dijkstra's uses the greedy rule: select the open node $v_{nearest}$ from $Q$ whi
 
 ## Algorithm 4: A* Search
 
-In progress, to be finished later this week.
+In robotics, we often have a rough idea of the high level properties that will make paths interesting. For example, with a single goal, nodes that are closer to the goal make sense to search before nodes that are farther. This doesn't mean we expect every path to be a straight line to the goal, but often some segments of best paths will be in the direction of the goal. 
+
+Our way to formalize this intuition is by creating a **planning heuristic**, $h(v)$. The function $h(v)$ is an input to our planning algorithm which must be coded by the roboticist to give a positive value for every vertex. 
+
+The **ideal** heurisitic, with special name $h^*(v)$, is the true cost-to-go to the goal from $v$. With this heuristic, planning is easy, we could always greedily explore the next unexplored node with the lowest value of $f(v) = g(v) + h^*(v)$. The sum of cost-to-reach plus cost-to-goal is the full/true cost of the path in this case, because both inputs are exact. As the job of optimal planning is to select the lowest cost paths, this greedy selection does the full job here. 
+
+Do we expect to have access to $h^*(v)$, which is essentially the solution to planning as an input? How did we receive that function? It would require running something like a full planner **before we plan**. It's not going to be available with any reasonable computation, so rather, this unit is about planning with $h(v)$ functions that are approximations to the cost-to-goal.
+
+### Heuristic Properties
+
+Real heuristics are estimates of the cost-to-goal. Therefore, by construction (and for things to make sense), they have the special property that $h(v)=0$ whenever $v \in G$, the node is a member of our goal set.
+
+A heuristic $h(v)$ can be:
+- **Admissible** if it underestimates, that is $\forall v \in V, h(v) \leq h^*(v).$ 
+- **Monotonic** if the computed $f(v)$ increases along all paths. Here we note that $\forall (v,v') \in V$, $f(v) \leq f(v')$ implies that $h(v) \leq c(v,v') + h(v')$ because $f=g+h$ and the difference in the $g(v)$ and $g(v')$ components of $f$ is $c(v,v')$.
+
+### The A* Algorithm
+
+A* planning means running a loop identical to Dijkstra's, but instead of using the cost-to-reach as the priority value, replacing this with the full path-cost estimate $f(v)=g(v)+h(v)$. Otherwise, the algorithm is unmodified.
+
+### A* Analysis
+
+Dijsktra's algorithm was optimal and complete. Does A* preserve these properties?
+
+**Thm: $A^*$ Planning is Optimal if $h(v)$ is Admissible**
+
+**Proof:**
+Consider two paths to the goal, the optimal one $P^*$ and a longer alternative $P_2$. Note that if our planner reaches the goal from either one of these paths, it will immediately return that path (check the Dijkstra's pseudo-code). An optimal algorithm must always return $P^*$. The question of optimality is then, "can A* visit all nodes in $P_2$ before it completes $P^*$? We will show this is impossible.
+
+Consider the $f(v)$ value that would be present in the queue if $v=goal$ and it has been inserted into the queue along path $P_2$. Recall that for goals, $h(v)=0$, so $f(v)$ must hold the real path cost of $P_2$.
+
+Compare this with the values present in the queue for any $v \in P^*$ that we happen to be considering at the same time. For those, $f(v) = g(v) + h(v)$, and here we use our assumption. $h(v) \leq h^*(v)$, and so the computed $f(v)$ is less than the path cost of $P^*$. We have the ordering $f(v) \leq c(P^*) \leq c(P_2)$. 
+
+Putting this together, it means that for all nodes $v \in P^*$, they will have some under-estimated path cost and it will surely be lower than the value of the goal along the longer path, $P_2$. This means we will surely pop all nodes along $P^*$, including the goal along that path, whose f-value and back-pointer we'll update when we reach it along $P^*$, before we pop that goal along $P_2$. With this invariant, we are done. A* planning with an admissible heuristic is optimal.
+
+### A* Exercises:
+1) How do Admissible and Monotonic heuristics compare? Does one imply the other and in what ordering?
+2) Analyze A* with an always-zero heuristic, $\forall v \in V, f(v)=0$. What are it's properties and how does it compare with other algorithms we know?
+
+
+
+
 
