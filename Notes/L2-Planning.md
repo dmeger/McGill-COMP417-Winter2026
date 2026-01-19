@@ -30,7 +30,7 @@ I hope you can verify that Brute-force Search for robotic planning is not optima
 
 ## Algorithm 2: Dynamic Programming 
 
-The problem with Brute-force search was that it's too disorginized in the order it uses to explore nodes and actions, and that it repeats work, checking the same branches and loops over and over. I hope that you already have ideas for how to better organize our search from your pre-reqs. The first one will be to use Dynamic Programming to find a planning sub-problem definition that allows us to divide-and-conquor. The useful one in planning is based on $D(v), defined as the cost-to-go from vertex $v$ to the nearest goal. It divides the problem like this:
+The problem with Brute-force search was that it's too disorginized in the order it uses to explore nodes and actions, and that it repeats work, checking the same branches and loops over and over. I hope that you already have ideas for how to better organize our search from your pre-reqs. The first one will be to use Dynamic Programming to find a planning sub-problem definition that allows us to divide-and-conquor. The useful one in planning is based on $D(v)$, defined as the cost-to-go from vertex $v$ to the nearest goal. It divides the problem like this:
 
 $$ D(v) = min[ d(v,u) + D(u)]\\
  \forall u \in N(v).$$
@@ -61,7 +61,7 @@ In robotics, we often have a rough idea of the high level properties that will m
 
 Our way to formalize this intuition is by creating a **planning heuristic**, $h(v)$. The function $h(v)$ is an input to our planning algorithm which must be coded by the roboticist to give a positive value for every vertex. 
 
-The **ideal** heurisitic, with special name $h^*(v)$, is the true cost-to-go to the goal from $v$. With this heuristic, planning is easy, we could always greedily explore the next unexplored node with the lowest value of $f(v) = g(v) + h^*(v)$. The sum of cost-to-reach plus cost-to-goal is the full/true cost of the path in this case, because both inputs are exact. As the job of optimal planning is to select the lowest cost paths, this greedy selection does the full job here. 
+The **ideal** heurisitic, with special name $h^{*}(v)$, is the true cost-to-go to the goal from $v$. With this heuristic, planning is easy, we could always greedily explore the next unexplored node with the lowest value of $f(v) = g(v) + h^*(v)$. The sum of cost-to-reach plus cost-to-goal is the full/true cost of the path in this case, because both inputs are exact. As the job of optimal planning is to select the lowest cost paths, this greedy selection does the full job here. 
 
 Do we expect to have access to $h^*(v)$, which is essentially the solution to planning as an input? How did we receive that function? It would require running something like a full planner **before we plan**. It's not going to be available with any reasonable computation, so rather, this unit is about planning with $h(v)$ functions that are approximations to the cost-to-goal.
 
