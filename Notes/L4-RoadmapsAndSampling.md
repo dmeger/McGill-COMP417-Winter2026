@@ -17,7 +17,55 @@ A Voronoi Diagram/Graph (VG) is the data structure formed by edges and curves th
 
 ## Algorithm 2: Visibility Graph
 
-Notes to be continued for Wednesday.
+A visibility graph extends the concept of "the shortest path is a straight line". When obstacles are present in between start and goal, our path must deviate from the direct one. However, we can show that, for polygonal obstacles made up of straight line segments, and in 2D, a string that we'd stretch as tightly as possible (shortest), ends up only passing through free space in straight segments and laying along the straight edges of the obstacles. How can we form this line? As a Visibility Graph (VisG):
+
+- Init, add the start as an active vertex in the VisG 
+- Loop until no new vertices are added:
+    - For all active vertices v:
+        - For all other vertices of obstacles v':
+            - Check visibility by forming the line (v,v') and collision-checking with all edges.
+            - If it is "visible", that is there are no collisions, add v' as an active vertex in VisG with edge (v,v').
+        - Remove v from the active list
+
+To make this into a planning algorithm, add the goal by considering it's visibility to all veritices $v$ in VisG and adding edges (v,goal) whenever visible. Then, run graph shortest-path in VisG and return the shortest path. 
+
+VisG planning is optimal in 2D but only finds approximate paths in higher dimensions, since the shortest path there may pass over edges. Forming the VisG has a polynomial cost in the number of vertices present, without significant computational contribution of the planning dimension (it is roughly linear for the extra cost of collision-checking against higher dimensional surfaces). When the obstacle shapes are simple enough (low vertex-count), VisG is a great choice. However, what about problems in high dimensions where the obstacles may also be complex? It's time for the star of our planning unit!
+
+## Rapidly Exploring Random Trees (RRT)
+
+A problem with both VG and VisG methods is that they process obstacle descriptions directly and thus scale in complexity with the description length of these. Of course there will be no way to avoid the fact that navigating around complex shapes makes paths more complex, but we want our interactions with those shapes to be as limited as possible. Here is a (very surprisingly) simple algorithm that only needs to collision check short line segments against the obstacles and still builds a global roadmap through the planning space:
+
+### Algorithm RRT:
+- Init $V={x_init}$ and $E=\emptyset$ 
+- For n=1...N
+    - Sample $x_{rand}$ uniformly from the free space
+    - Find $x_{nearest} \in V$ using an efficient method
+    - Generate candidate $x_{new} = Steer(x_{nearest},x_{new})$
+    - If not $CheckCollision(V,E,x_{nearest},x_{new})$
+        - Add to the tree. $V \leftarrow V \cup x_{new}$, $E \leftarrow E \cup (x_{nearest},x_{new})$.
+
+This algorithm builds a tree through the planning space with surprisingly good scaling in terms of planning dimension and obstacle complexity, but only when all the "core" steps are done well. We need efficient sampling, nearest neighbors, and collision checking. Luckily, all of these are well-researched and excellent sub-methods are available.
+
+The punch-line about RRTs, to come, is that they **explore rapidly**. This means that they achieve efficient coverage of the free space. Consider the potential alternative, they could have spent a lot of time densifying the tree near the start. When planning start-to-goal, with a potentially adversarial goal location, the key for good complexity is getting everywhere fast. We will continue to see how RRTs do this, and just how fast they are.
+
+First, a quick run-down of how to make the RRT-building loop run efficiently:
+
+### Sampling Free Space
+
+### Nearest Neighbor Queries
+
+For each sample, we must find the closest point in the existing tree. This is an important part of achieving the rapoidly-exploring property, but if we aren't careful, it will require us to process all of the existing tree each iteration. This adds an overall $O(n^2)$ complexity and might encourage us not growing the tree too large. However, rather than brute force comparison, we can use a spatially-indexed data structure
+
+**Option 1: KD-tree**
+
+A KD-Tree is a data structure that splits space into axis-aligned half regions, ideally with half of the points in each region. We can rapidly (in $O(lg(n))$ time) find the bin closest to our query point. Unfortunately, as bins are rectangular and "distance" has (hyper)spherical geometry, it can be that the closest point exists in a neighboring bin. The retrieval algorithm thus proceeds upwards for some levels to confirm a match. Note that we must perform an insertion for each new point and balancing kd-trees is not a trivial operation. In very large planning dimensions, the "curse of dimensionality" causes more bins to be neighbors and the upwards recursion can end up covering nearly the whole tree.
+
+To summarize, although the complexity of kd-trees depends on the point distribution and dimensionality. In practice, it is effective to pair with RRTs almost always, but we should know what concerns to have. 
+
+**Option 2: Locality-Sensitive Hashing**
+
+
+
 
 
 
