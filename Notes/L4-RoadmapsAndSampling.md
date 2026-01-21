@@ -105,7 +105,11 @@ This simply accounts for our uniform sampling of free space in a convenient way 
 
 ### Claim 4: RRT finds $g$ with probability increasing exponentially in iteration
 
-This is a geometry argument about the speed with which Voronoi cells shrink as the tree grows. By Claim 3 we shrink the largest ones more often, and we shrink them by something related to the Steer() distance every time. 
+This is a geometry argument about the speed with which Voronoi cells shrink as the tree grows. By Claim 3 we shrink the largest ones more often, and we shrink them by something related to the Steer() distance every time. For an ${\epsilon}-ball$ to remain around $g$ without a sample, it must necessarily have some set of containing Voronoi regions. Eventually, as the overall volume of the tree grows, the remaining potential volume in the space shrinks and the "Voronoi-bias" property increases the probability for us to either have already sampled within $\epsilon$ of the goal, or to do it in this immediate next iteration.
+
+## RRT Modifications of Interest
+
+One of the worst parts of RRT is its sub-optimality, and the jerky nature of the paths it produces. A famous improvement is ${RRT}^{\*}$. This algorithm differs in the way the tree is extended to include the newly sampled $x_{new}$. Instead of only considering connections to $x_{near}$, ${RRT}^{\*}$ considers a nearby set of nodes in the tree and looks for the one that actually gives the shortest path to $x_{new}$. It also does a small amount of "re-wiring" of the existing tree if $x_{new}$ may now allow shorter paths to some existing nodes. With this combination, a somewhat complex set of analysis allows us to show convergence of ${RRT}^{\*}$ to nearly optimal paths.
 
 
 
