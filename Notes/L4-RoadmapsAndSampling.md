@@ -64,9 +64,48 @@ To summarize, although the complexity of kd-trees depends on the point distribut
 
 **Option 2: Locality-Sensitive Hashing**
 
+Here, we form a hash table, as you are hopefully all familiar with. However, instead of hoping for every data point to be in a separate bucket, we choose a hash function that brings spatially nearby points together into a common bucket. When retrieving a nearest neighbor, we can use the query's hash value to pull up these likely neighbors and then only search that smaller subset. Design choices on how to control the number of neighbors in a bucket and how to handle the search over neighbors (it may still require a local kd-tree), impact the efficiency of this method. It is often run in an "approximately nearest" fashion where the best match may lay in another hash bin but we ignore this for speed.
 
+## RRT Properties
 
+**Claim: Building RRTs is efficient in high dimensions and with complex obstaces**
 
+**Disclaimer:** Worst-case analysis (in fact any precise analysis) is very complex!
+
+1. RRT will eventually "cover" the free space.
+2. RRT will not compute the optimal path asymptotically.
+3. New nodes will be distributed with a Voronoi-bias. That is, connected to each vertex $v$ in proportion to the volume of the Voronoi cell that is nearest to $v$.
+4. The probability that RRT finds a path to $g$ increases exponentially in the number of iterations.
+
+### Claim 1: Analysis
+
+Coverage in this case is probabilistic. For any point $p$ in the free space, and any small distance $\epsilon$, a vertex in the tree $v$ will eventually enter the hyper-sphere around $p$, $||p-v||_{2}^{2} < \epsilon$. 
+
+First, we are assuming free space is connected. The tree can obviously never reach through a wall or obstacle to a pocket of unreachable nodes. 
+
+Next, the connection must posses finite, non-zero volume. Intuitively, there must be a "tube" which has reasonable radius at all points. Otherwise, there can be only a single point, or series of points, with no volume around them. None of these points $p$ will ever be sampled precisely in a continuous space. That is $p(x_{rand} == p)=0$, a consequence of probability in continuous spaces. When there is non-zero volume however, we can just wait until the sample $x_{rand}$ is in the "direction" along the tube. It will happen eventually. We make progress and repeat the same logic until we reach the end of the tube (and all tubes in the space).
+
+With these conditions, eventually we will always make progress along the unknowable, but existing path from $x_{init}$ to $p$, which has finite, non-zero volume. The argument is basically that uniform coverage samples every place infinitely often, including whatever place we need to sample next for the tree to reach $p$. 
+
+Claim 1 already tells us RRT is "probabilistically complete". If a path exists, the RRT will find a path with probability increasing as we continue to sample. But, this process could maybe be very slow and expensive. The next claims are about speed and details of the path found.
+
+### Claim 2: RRT is Probabilistically Sub-Optimal
+
+RRT returns a path which is the branch of the tree, $x_{init}$ to the first leaf that enters an ${\epsilon}-ball$ of the goal, $g$. 
+
+a) There may be many sub-optimal ways to pass obstacles. These are all competing with the optimal "route". Although the fact that the optimal path is shortest and therefore requires the least progress to be made, the alternatives can be just a bit longer and there can be countlessly many. Which one is selected is up to random sampling chance.
+
+b) The assumptions of Claim 1 mean we can expect a non-zero volume tube to exist around the optimal path. So, even if RRT finds a path within this "homotopy class" (technical definition you don't need to know precisely... just think of the things close to optimal), the RRT-path will still very likely be less smooth than the optimal one. 
+
+RRT will pick points within the non-zero volume in all radial directions as likely as the optimal central point. Since the central, optimal path has vanishingly small chance of being sampled, and there are many steps along the path, overall, there is essentially zero chance to sample optimally.
+
+### Claim 3: New Nodes are Voronoi-distributed
+
+This simply accounts for our uniform sampling of free space in a convenient way to book-keep which RRT vertex will be $x_{nearest}$ at each step. Not much more analysis here.
+
+### Claim 4: RRT finds $g$ with probability increasing exponentially in iteration
+
+This is a geometry argument about the speed with which Voronoi cells shrink as the tree grows. By Claim 3 we shrink the largest ones more often, and we shrink them by something related to the Steer() distance every time. 
 
 
 
