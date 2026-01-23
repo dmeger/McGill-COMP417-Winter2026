@@ -49,7 +49,7 @@ We'll follow a few text books, but material from these will be pointed to and ex
 
 ## Office Hour Schedule. Always in the Robotics Teaching Lab, TR4130 unless noted
 - Dave in-person: Wednesday 2:30-3:30
-- Dave on [https://mcgill.zoom.us/j/9225598493](Zoom): Friday 10am-11am
+- Dave on [Zoom](https://mcgill.zoom.us/j/9225598493): Friday 10am-11am
 - Amin: Wednesday noon-1pm
 - Farnoosh: Friday 1pm-2pm
 - Steven: Thursday 5pm-6pm
