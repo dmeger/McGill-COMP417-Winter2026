@@ -8,15 +8,15 @@
 | Jan 14 | Bug Algorithms | [Bug Algorithm Notes](Notes/L3-Bugs.md)  |
 | Jan 19 | Cell Decomposition and Roadmaps | [Cell and Roadmap Notes](Notes/L4-RoadmapsAndSampling.md) |
 | Jan 21 | Random Trees |  |
-| Jan 26 | Control Intro: MDPs |  |
-| Jan 28 | PID Control | |
+| Jan 26 | Control Intro: MDPs | [Control Intro Notes](Notes/L5-Control.md) |
+| Jan 28 | PID Control | [PID and LQR Notes](Notes/L6-PID-And-LQR.md) |
 | Feb 2 | Linear Quadratic Regulators | |
-| Feb 4 | Trajectory Optimization | |
-| Feb 9 | Tabular RL |  |
-| Feb 11 | Actor Critic | |
-| Feb 16 | Learning from Demonstration: BC |  |
-| Feb 18 | Inverse RL | |
-| Feb 23 | Midterm Review Session | |
+| Feb 4 | Tabular RL and Learning from Demonstrations Intro | |
+| Feb 9 | Apprenticeship Learning and Policy Gradient |  |
+| Feb 11 | Transfer Learning, TD3 | |
+| Feb 16 | Modern Large Robot Controllers: VLA and World Models |  |
+| Feb 18 | Midterm Review Session | |
+| Feb 23 | Guest Lecture, TA Amin Abyaneh  | |
 | Feb 25 | No class in lieu of online midterm |  |
 | Mar 2 and 4 | Reading Week | No classes |
 | Mar 9 | Motion and Sensor Models | |
