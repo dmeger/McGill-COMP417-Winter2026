@@ -3,8 +3,8 @@
 Markov Decision Processes (MDP) and Reinforcement Learning are parallel fields to Optimal Control, which occur more primarily in Computer Science and often focus on discrete state and action spaces. 
 
 The same models and objectives hold:
-- Dynamics p(s'|s,a) (if deterministic, s'=f(s,a))
-- Reward instead of cost, r(s,a) = -c(s,a)
+- Dynamics $p(s'|s,a)$ (if deterministic, $s'=f(s,a)$)
+- Reward instead of cost, $r(s,a) = -c(s,a)$
 - Control policy $a=\pi(s)$
 - Overall objective, $J(\pi)=\mathbb{E}_{s_0 \sim p(s_0)}\sum_{t=0:\infin}{\gamma}^t r(s_t,a_t)$
 
