@@ -2,11 +2,7 @@
 
 Markov Decision Processes (MDP) and Reinforcement Learning are parallel fields to Optimal Control, which occur more primarily in Computer Science and often focus on discrete state and action spaces. 
 
-The same models and objectives hold:
-- Dynamics $p(s'|s,a)$ (if deterministic, $s'=f(s,a)$)
-- Reward instead of cost, $r(s,a) = -c(s,a)$
-- Control policy $a=\pi(s)$
-- Overall objective, $J(\pi)=\mathbb{E}_{s_0 \sim p(s_0)}\sum_{t=0:\infty}{\gamma}^t r(s_t,a_t)$
+The same models and objectives hold. The dynamics are $p(s'|s,a)$ (if deterministic, $s'=f(s,a)$). We use a reward instead of a cost, $r(s,a) = -c(s,a)$ The control policy is $a=\pi(s)$ and the overall objective is $J(\pi)=\mathbb{E}_{s_0 \sim p(s_0)}\sum_{t=0:\infty}{\gamma}^t r(s_t,a_t)$.
 
 ## Policy Evaluation
 
@@ -52,7 +48,7 @@ Why? The argument is based on contraction logic. The maximum change that will oc
 
 ### Optimal Policy Extraction
 
-Note that we said Value Iteration was for control, but only computing $V^{\*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): ${\pi}^{\*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{\*}(s_{t+1}) \large]$. 
+Note that we said Value Iteration was for control, but only computing $V^{*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): ${\pi}^{*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{*}(s_{t+1}) \large]$. 
 
 
 
