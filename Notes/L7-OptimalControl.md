@@ -38,21 +38,21 @@ Instead, iterative Policy Evaluation means starting with an initial guess for $V
 
 ## Value Iteration
 
-While we now have a way to compute $V^{\pi}(s)$ for every policy, $\pi$, we want to go further and find the optimal behavior policy, ${\pi}^{\\*}$, which is defined mathematically as $argmax_{\pi}J(\pi)$. Since Value functions capture portions of the infinite sums in $J$, we can express this optimal policy's value in Equation (2), as:
+While we now have a way to compute $V^{\pi}(s)$ for every policy, $\pi$, we want to go further and find the optimal behavior policy, ${\pi}^{\*}$, which is defined mathematically as $argmax_{\pi}J(\pi)$. Since Value functions capture portions of the infinite sums in $J$, we can express this optimal policy's value in Equation (2), as:
 
 $$\begin{aligned}
-V^{{\pi}^{\\*}}(s) = argmax_{a}\large[ r(s_t,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,a)} V^{{\pi}^{\\*}}(s_{t+1})\large]. 
+V^{{\pi}^{\*}}(s) = argmax_{a}\large[ r(s_t,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,a)} V^{{\pi}^{\*}}(s_{t+1})\large]. 
 \end{aligned}$$
 
 Equation (2) is known as the Bellman Optimality Equations. They are equivalent to Equation (1)'s equations when the policy, $\pi$ in $V^{\pi}$ is optimal but have the benefit of being true without knowing the policy! Therefore, they open up our ability to write algorithms that operate purely in the space of Value functions. One of the most famous is called Value Iteration.
 
-Value Iteration is the optimality analog of iterative Policy Evaluation. We randomly initialize a $V(s)$ (perhaps zero for every state). Then, we loop over each entry in the value vector, evaluating the right hand side of Equation (2) for each. Surprisingly, this procedure is guaranteed to converge, and when it does, the $V(s)$ vector holds $V^{\\*}(s) := V^{{\pi}^{\\*}}(s)$. 
+Value Iteration is the optimality analog of iterative Policy Evaluation. We randomly initialize a $V(s)$ (perhaps zero for every state). Then, we loop over each entry in the value vector, evaluating the right hand side of Equation (2) for each. Surprisingly, this procedure is guaranteed to converge, and when it does, the $V(s)$ vector holds $V^{\*}(s) := V^{{\pi}^{\*}}(s)$. 
 
-Why? The argument is based on contraction logic. The maximum change that will occur for any state in a given loop shrinks by $\gamma$ compared to previous applications. Eventually, the updates must become less than any fixed constant $\epsilon$, and we have computed (within $\epsilon$-accuracy) the unique $V^{\\*}$.
+Why? The argument is based on contraction logic. The maximum change that will occur for any state in a given loop shrinks by $\gamma$ compared to previous applications. Eventually, the updates must become less than any fixed constant $\epsilon$, and we have computed (within $\epsilon$-accuracy) the unique $V^{\*}$.
 
 ### Optimal Policy Extraction
 
-Note that we said Value Iteration was for control, but only computing $V^{\\*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): ${\pi}^{\\*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{\\*}(s_{t+1}) \large]$. 
+Note that we said Value Iteration was for control, but only computing $V^{\*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): ${\pi}^{\*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{\*}(s_{t+1}) \large]$. 
 
 
 
