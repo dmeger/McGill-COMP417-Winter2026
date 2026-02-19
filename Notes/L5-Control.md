@@ -43,7 +43,7 @@ Let's put this together: we can make a global solution up from:
 
 The resulting phase space when acting with these rules looks like this:
 
-![Opt Control Phase](/Images/optu.jpg)
+![Opt Control Phase](../Images/optu.jpg)
 
 This control method is called **Bang-Bang** because it is made up of only maximal controls and switches immediately. There is never a case where we apply $u=0.5$ or any other intermediate control.
 
