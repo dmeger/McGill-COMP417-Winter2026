@@ -18,13 +18,13 @@ A2: Divide and conquor the $J$ expression by noting there is a relationship betw
 
 $$\begin{aligned}
 V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\sum_{k=1:\infty}{\gamma}^k r(s_{t+k},a_{t+k}).
-$$\end{aligned}
+\end{aligned}$$
 
 Note that the ${\gamma}^{k}$ term is a multiple of all terms in the sum, with $k>1$ in all cases. We can factor one $\gamma$ to reach:
 
 $$\begin{aligned}
 V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\gamma \sum_{k=1:\infty}{\gamma}^{k-1} r(s_{t+k},a_{t+k}).
-$$\end{aligned}
+\end{aligned}$$
 
 This reduces the discount order of the initial term in the sum to, 0, which we can identify as another copy of the Value function. Define Equation (1) as:
 
