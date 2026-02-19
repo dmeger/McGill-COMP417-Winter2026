@@ -54,11 +54,5 @@ Why? The argument is based on contraction logic. The maximum change that will oc
 
 Note that we said Value Iteration was for control, but only computing $V^{\\*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): ${\pi}^{\\*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{\\*}(s_{t+1}) \large]$. 
 
-# Reinforcement Learning
-
-While the previous section described very useful tools to understand and control robots, we can note that there was no "learning" happening. We didn't need to collect any data and we did require full model knowledge: that is, the MDP state space, action space, transition function and reward function were needed as inputs to Iterative Policy Evaluation and Value Iteration.
-
-Learning in this type of system means trial-and-error: making behaviors, observing their outcomes and using the generated data to solve for components such as the Value function or policy. 
-
 
 
