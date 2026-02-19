@@ -6,7 +6,7 @@ The same models and objectives hold:
 - Dynamics $p(s'|s,a)$ (if deterministic, $s'=f(s,a)$)
 - Reward instead of cost, $r(s,a) = -c(s,a)$
 - Control policy $a=\pi(s)$
-- Overall objective, $J(\pi)=\mathbb{E}_{s_0 \sim p(s_0)}\sum_{t=0:\infin}{\gamma}^t r(s_t,a_t)$
+- Overall objective, $J(\pi)=\mathbb{E}_{s_0 \sim p(s_0)}\sum_{t=0:\infty}{\gamma}^t r(s_t,a_t)$
 
 ## Policy Evaluation
 
@@ -17,13 +17,13 @@ A1: It is an empirically evaluatable quantity. We could just run the policy many
 A2: Divide and conquor the $J$ expression by noting there is a relationship between the subsequent terms in the sum that is fully determined by the MDP model. To see it, we define a sum of discounted future returns conditioned on the process starting in a given state, $s$ and acting based on policy $\pi$ from then onwards.
 
 $$\begin{aligned}
-V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\sum_{k=1:\infin}{\gamma}^k r(s_{t+k},a_{t+k}).
+V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\sum_{k=1:\infty}{\gamma}^k r(s_{t+k},a_{t+k}).
 \end{aligned}$$
 
 Note that the ${\gamma}^{k}$ term is a multiple of all terms in the sum, with $k>1$ in all cases. We can factor one $\gamma$ to reach:
 
 $$\begin{aligned}
-V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\gamma \sum_{k=1:\infin}{\gamma}^{k-1} r(s_{t+k},a_{t+k}).
+V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}\gamma \sum_{k=1:\infty}{\gamma}^{k-1} r(s_{t+k},a_{t+k}).
 \end{aligned}$$
 
 This reduces the discount order of the initial term in the sum to, 0, which we can identify as another copy of the Value function. Define Equation (1) as:
