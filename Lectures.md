@@ -11,8 +11,8 @@
 | Jan 26 | Control Intro: MDPs | [Control Intro Notes](Notes/L5-Control.md) |
 | Jan 28 | PID Control | [PID and LQR Notes](Notes/L6-PID-And-LQR.md) |
 | Feb 2 | Linear Quadratic Regulators | |
-| Feb 4 | Tabular RL and Learning from Demonstrations Intro | |
-| Feb 9 | Apprenticeship Learning and Policy Gradient |  |
+| Feb 4 | Tabular RL and Learning from Demonstrations Intro | [MDP Control Notes](Notes/L7-OptimalControl.md) |
+| Feb 9 | Apprenticeship Learning and Policy Gradient |  [RL Notes](Notes/L8-ReinforcementLearning.md) |
 | Feb 11 | Transfer Learning, TD3 | |
 | Feb 16 | Modern Large Robot Controllers: VLA and World Models |  |
 | Feb 18 | Midterm Review Session | |

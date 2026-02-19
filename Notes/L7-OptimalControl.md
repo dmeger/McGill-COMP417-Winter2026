@@ -29,7 +29,7 @@ V^{\pi}(s) = r(s_t,\pi(s_t)) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))}
 This reduces the discount order of the initial term in the sum to, 0, which we can identify as another copy of the Value function. Define Equation (1) as:
 
 $$\begin{aligned}
-V^{\pi}(s) = r(s_t,\pi(s_t)) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))} V(s_{t+1}). 
+V^{\pi}(s) = r(s_t,\pi(s_t)) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s_t,\pi(s_t))} V^{\pi}(s_{t+1}). 
 \end{aligned}$$
 
 The above set of equations, one for each state, are called the Bellman Equations. They are the key tool across all of Reinforcement Learning. Every correct solution to the Policy Evaluation problem must satisfy the Bellman Equations. Therefore, they define a system of linear equations. They could be solved directly by inverting the linear operator relating the left and right-hand sides, but this is expensive for large state spaces and leaves little potential for integration with control, which is our final goal.
