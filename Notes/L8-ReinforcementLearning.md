@@ -11,8 +11,8 @@ Learning in this type of system means trial-and-error: making behaviors, observi
 When we lack knowledge of the transition and reward model, the knowledge of $V(s)$ alone is insufficient to select optimal actions. We are no longer able to assign the proper weighting of $V(s_{t+1})$ over possible next states, which we used the known transition function for in Optimal Control. So, what needs to change? We have to capture the value of being in a state and taking an action (this will allow a max over actions to pick optimal behavior). Our new construct is called the Action-Value function, and written as:
 
 $$\begin{align}
-Q^{\pi}(s,a) &=& r(s,a) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)} \sum_{k=1:\infty}{\gamma}^{k} r(s_{t+k},a_{t+k})
-&=& r(s,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)} \sum_{k=1:\infty}{\gamma}^{k-1} r(s_{t+k},a_{t+k})
+Q^{\pi}(s,a) &=& r(s,a) + \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)} \sum_{k=1:\infty}{\gamma}^{k} r(s_{t+k},a_{t+k})\\
+&=& r(s,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)} \sum_{k=1:\infty}{\gamma}^{k-1} r(s_{t+k},a_{t+k})\\
 &=& r(s,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}  Q^{\pi}(s_{t+1},\pi(s_{t+1})).
 \end{align}$$
 
