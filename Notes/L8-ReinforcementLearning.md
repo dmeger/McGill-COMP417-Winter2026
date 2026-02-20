@@ -6,7 +6,7 @@ Learning in this type of system means trial-and-error: making behaviors, observi
 - On-policy: when the data they learn from is drawn such that $a=\pi(s)$ with the current $\pi$ under consideration, or
 - Off-policy: when the actions in the data can be from a different $\pi$.
 
-## Q-Learning Off Policy RL for Discrete State/Action
+## Q-Learning Off-Policy RL for Discrete State/Action
 
 When we lack knowledge of the transition and reward model, the knowledge of $V(s)$ alone is insufficient to select optimal actions. We are no longer able to assign the proper weighting of $V(s_{t+1})$ over possible next states, which we used the known transition function for in Optimal Control. So, what needs to change? We have to capture the value of being in a state and taking an action (this will allow a max over actions to pick optimal behavior). Our new construct is called the Action-Value function, and written as:
 
