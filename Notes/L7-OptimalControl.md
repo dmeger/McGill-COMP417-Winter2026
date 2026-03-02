@@ -55,7 +55,7 @@ Why? The argument is based on contraction logic. The maximum change that will oc
 Note that we said Value Iteration was for control, but only computing $V^{*}$ may not seem to allow us to behave optimally at first. Happily, the definition of the optimal value, plus some model knowledge allows optimal action, with the rule for picking actions at every state (policy): 
 
 $$\begin{aligned}
-{\pi}^{*}(s)=argmax_a \large[r(s,a) \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{*}(s_{t+1}) \large].
+{\pi}^{*}(s)=argmax_a \large[r(s,a) + \gamma \mathbb{E}_{s_{t+1} \sim p(s_{t+1}|s,a)}V^{*}(s_{t+1}) \large].
 \end{aligned}$$ 
 
 
